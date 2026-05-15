@@ -51,14 +51,6 @@ export const projects = [
     stack: ["Next.js"],
   },
   {
-    name: "Payment Tracking",
-    type: "Finance workflow",
-    image: "/pt.png",
-    description:
-      "ระบบติดตามสถานะการจ่ายเงิน ช่วยให้ผู้ใช้ตรวจสอบและจัดการข้อมูลการชำระเงินได้เป็นระบบมากขึ้น",
-    stack: ["Next.js", "Golang"],
-  },
-  {
     name: "Library Borrowing System",
     type: "Library management",
     image: "/bs.png",
