@@ -35,6 +35,14 @@ export const projects = [
     stack: ["Next.js", "Elysia"],
   },
   {
+    name: "Cinetix",
+    type: "Movie ticket booking",
+    image: "/ct.png",
+    description:
+      "เว็บจองตั๋วหนังสำหรับเลือกภาพยนตร์ รอบฉาย และที่นั่ง พร้อมจัดการข้อมูลการจองได้อย่างสะดวก",
+    stack: ["Next.js", "Golang"],
+  },
+  {
     name: "Matrix Diagonalizer",
     type: "Calculation tool",
     image: "/da.png",
