@@ -1,6 +1,10 @@
 import Image from "next/image";
 import { projects } from "@/data/portfolio";
 
+function getGithubAvatarUrl(username: string) {
+  return `https://github.com/${username}.png`;
+}
+
 export function ProjectsSection() {
   return (
     <section id="projects" className="py-4">
@@ -16,7 +20,7 @@ export function ProjectsSection() {
         {projects.map((project) => (
           <article
             key={project.name}
-            className="grid gap-5 rounded-lg border border-white/10 bg-white/[0.03] p-5 transition hover:border-white/20 md:grid-cols-[0.9fr_1.1fr]"
+            className="grid gap-5 rounded-lg border border-white/10 bg-white/3 p-5 transition hover:border-white/20 md:grid-cols-[0.9fr_1.1fr]"
           >
             <div className="space-y-4">
               <div className="relative aspect-video overflow-hidden rounded-md border border-white/10 bg-zinc-950">
@@ -51,6 +55,43 @@ export function ProjectsSection() {
                   </span>
                 ))}
               </div>
+              {project.collaborators ? (
+                <div className="mt-5">
+                  <p className="text-xs font-medium uppercase text-zinc-500">
+                    Collaborators
+                  </p>
+                  <ul className="mt-2 flex flex-wrap gap-2">
+                    {project.collaborators.map((collaborator) => {
+                      const displayName =
+                        collaborator.name ?? collaborator.username;
+                      const avatarUrl =
+                        collaborator.avatarUrl ||
+                        getGithubAvatarUrl(collaborator.username);
+
+                      return (
+                        <li key={collaborator.username}>
+                          <a
+                            href={`https://github.com/${collaborator.username}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center gap-2 rounded-md border border-white/10 bg-zinc-950/70 px-2.5 py-1.5 text-sm font-medium text-zinc-300 transition hover:border-cyan-300/40 hover:text-white"
+                          >
+                            <Image
+                              src={avatarUrl}
+                              alt=""
+                              width={24}
+                              height={24}
+                              unoptimized
+                              className="size-6 rounded-full bg-zinc-800"
+                            />
+                            <span>{displayName}</span>
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ) : null}
             </div>
           </article>
         ))}

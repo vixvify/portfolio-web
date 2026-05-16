@@ -1,3 +1,18 @@
+type ProjectCollaborator = {
+  username: string;
+  name?: string;
+  avatarUrl?: string;
+};
+
+type Project = {
+  name: string;
+  type: string;
+  image: string;
+  description: string;
+  stack: string[];
+  collaborators?: ProjectCollaborator[];
+};
+
 export const frontend = [
   { name: "Next.js", icon: "nextdotjs", color: "#ffffff" },
   { name: "Angular", icon: "angular", color: "#dd0031" },
@@ -25,7 +40,7 @@ export const tools = [
   { name: "Cloudflare", icon: "cloudflare", color: "#f38020" },
 ];
 
-export const projects = [
+export const projects: Project[] = [
   {
     name: "ACS Website",
     type: "Department website",
@@ -33,6 +48,23 @@ export const projects = [
     description:
       "เว็บไซต์ของสาขาวิทยาการคอมพิวเตอร์ประยุกต์ KMUTT สำหรับสื่อสารข้อมูลของหลักสูตรและกิจกรรมต่างๆ",
     stack: ["Next.js", "Elysia"],
+    collaborators: [
+      {
+        username: "Narutchai01",
+        name: "Narutchai",
+        avatarUrl: "",
+      },
+      {
+        username: "suchanan09",
+        name: "ZM",
+        avatarUrl: "",
+      },
+      {
+        username: "chanatip03",
+        name: "Chanatip",
+        avatarUrl: "",
+      },
+    ],
   },
   {
     name: "Cinetix",
@@ -57,6 +89,13 @@ export const projects = [
     description:
       "ระบบยืมหนังสือห้องสมุดสำหรับจัดการข้อมูลหนังสือ สมาชิก และสถานะการยืมคืนให้เป็นระบบมากขึ้น",
     stack: ["Next.js", "Spring Boot"],
+    collaborators: [
+      {
+        username: "Puwizz",
+        name: "Puwizz",
+        avatarUrl: "",
+      },
+    ],
   },
   {
     name: "Letter from Where",
@@ -65,6 +104,13 @@ export const projects = [
     description:
       "เว็บเล่าเรื่องเกี่ยวกับ imposter syndrome ผ่านประสบการณ์และบรรยากาศแบบ interactive storytelling",
     stack: ["Next.js"],
+    collaborators: [
+      {
+        username: "Asaleema",
+        name: "Leema",
+        avatarUrl: "",
+      },
+    ],
   },
 ];
 
