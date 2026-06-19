@@ -14,8 +14,8 @@ type Project = {
 };
 
 export const frontend = [
+  { name: "React", icon: "react", color: "#61dafb" },
   { name: "Next.js", icon: "nextdotjs", color: "#ffffff" },
-  { name: "Angular", icon: "angular", color: "#dd0031" },
   { name: "Tailwind CSS", icon: "tailwindcss", color: "#38bdf8" },
   { name: "MUI", icon: "mui", color: "#007fff" },
 ];
@@ -67,12 +67,34 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "Cinetix",
-    type: "Movie ticket booking",
-    image: "/ct.png",
+    name: "Glory",
+    type: "Film platform",
+    image: "/glory.png",
     description:
-      "เว็บจองตั๋วหนังสำหรับเลือกภาพยนตร์ รอบฉาย และที่นั่ง พร้อมจัดการข้อมูลการจองได้อย่างสะดวก",
-    stack: ["Next.js", "Golang"],
+      "แพลตฟอร์มรวมหนังสั้นไทยที่เปิดโอกาสให้ผู้สร้างภาพยนตร์อัปโหลด และแบ่งปันผลงานสู่ผู้ชม",
+    stack: ["Next.js", "Elysia"],
+    collaborators: [
+      {
+        username: "Puwizz",
+        name: "Puwizz",
+        avatarUrl: "",
+      },
+    ],
+  },
+  {
+    name: "Pirahus",
+    type: "Web Platform",
+    image: "/pirahus.png",
+    description:
+      "เว็บไซต์พี่รหัสน้องรหัสสำหรับเล่นเกมสะสมแต้มและแลกคำใบ้เพื่อค้นหาพี่รหัส",
+    stack: ["Next.js"],
+    collaborators: [
+      {
+        username: "Some1Names",
+        name: "Some1Names",
+        avatarUrl: "",
+      },
+    ],
   },
   {
     name: "Matrix Diagonalizer",
@@ -93,21 +115,6 @@ export const projects: Project[] = [
       {
         username: "Puwizz",
         name: "Puwizz",
-        avatarUrl: "",
-      },
-    ],
-  },
-  {
-    name: "Letter from Where",
-    type: "Storytelling web",
-    image: "/lw.png",
-    description:
-      "เว็บเล่าเรื่องเกี่ยวกับ imposter syndrome ผ่านประสบการณ์และบรรยากาศแบบ interactive storytelling",
-    stack: ["Next.js"],
-    collaborators: [
-      {
-        username: "Asaleema",
-        name: "Leema",
         avatarUrl: "",
       },
     ],
