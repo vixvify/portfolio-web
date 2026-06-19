@@ -4,29 +4,48 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="grid gap-6 border-t border-white/10 py-8 md:grid-cols-[0.8fr_1.2fr]"
+      className="animate-fade-up delay-700 border-t border-white/10 py-10 sm:py-12"
     >
-      <div>
-        <p className="text-sm font-medium uppercase text-amber-200">Contact</p>
-        <h2 className="mt-2 text-3xl font-semibold text-white">
-          Let&apos;s connect.
-        </h2>
+      <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+        <div className="shrink-0">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30">
+            Contact
+          </p>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-white sm:text-4xl">
+            Let&apos;s connect.
+          </h2>
+        </div>
+
+        <div className="flex w-full flex-col gap-1 sm:max-w-xs">
+          {contacts.map((contact) => (
+            <a
+              key={contact.label}
+              href={contact.href}
+              target={contact.href.startsWith("http") ? "_blank" : undefined}
+              rel={contact.href.startsWith("http") ? "noreferrer" : undefined}
+              className="flex items-center justify-between border-b border-white/10 py-4 last:border-none"
+            >
+              <span className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40">
+                {contact.label}
+              </span>
+              <span className="flex items-center gap-2 text-sm font-medium text-white/80">
+                <span className="max-w-[180px] truncate sm:max-w-none">
+                  {contact.value}
+                </span>
+                <span className="text-white/30">↗</span>
+              </span>
+            </a>
+          ))}
+        </div>
       </div>
-      <div className="grid gap-3 sm:grid-cols-3">
-        {contacts.map((contact) => (
-          <a
-            key={contact.label}
-            href={contact.href}
-            target={contact.href.startsWith("http") ? "_blank" : undefined}
-            rel={contact.href.startsWith("http") ? "noreferrer" : undefined}
-            className="rounded-lg border border-white/10 bg-white/[0.03] p-4 transition hover:border-emerald-300/60 hover:bg-emerald-300/5"
-          >
-            <p className="text-sm text-zinc-500">{contact.label}</p>
-            <p className="mt-2 break-words font-medium text-zinc-100">
-              {contact.value}
-            </p>
-          </a>
-        ))}
+
+      <div className="mt-12 flex items-center justify-between sm:mt-16">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/20">
+          vixvify
+        </span>
+        <span className="text-[10px] text-white/20">
+          © {new Date().getFullYear()}
+        </span>
       </div>
     </section>
   );

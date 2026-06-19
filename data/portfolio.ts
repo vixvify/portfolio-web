@@ -46,7 +46,7 @@ export const projects: Project[] = [
     type: "Department website",
     image: "/acs.png",
     description:
-      "เว็บไซต์ของสาขาวิทยาการคอมพิวเตอร์ประยุกต์ KMUTT สำหรับสื่อสารข้อมูลของหลักสูตรและกิจกรรมต่างๆ",
+      "The official website for the Applied Computer Science department at KMUTT, showcasing program information and activities.",
     stack: ["Next.js", "Elysia"],
     collaborators: [
       {
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     type: "Film platform",
     image: "/glory.png",
     description:
-      "แพลตฟอร์มรวมหนังสั้นไทยที่เปิดโอกาสให้ผู้สร้างภาพยนตร์อัปโหลด และแบ่งปันผลงานสู่ผู้ชม",
+      "A Thai short film platform that lets filmmakers upload and share their work with a wider audience.",
     stack: ["Next.js", "Elysia"],
     collaborators: [
       {
@@ -83,10 +83,10 @@ export const projects: Project[] = [
   },
   {
     name: "Pirahus",
-    type: "Web Platform",
+    type: "Web platform",
     image: "/pirahus.png",
     description:
-      "เว็บไซต์พี่รหัสน้องรหัสสำหรับเล่นเกมสะสมแต้มและแลกคำใบ้เพื่อค้นหาพี่รหัส",
+      "A code-sibling matching platform where students earn points and exchange clues to discover their paired senior.",
     stack: ["Next.js"],
     collaborators: [
       {
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     type: "Calculation tool",
     image: "/da.png",
     description:
-      "เครื่องมือสำหรับคำนวณและแปลงเมทริกซ์ให้อยู่ในรูป diagonal เพื่อช่วยตรวจสอบขั้นตอนและผลลัพธ์ทางคณิตศาสตร์",
+      "A tool for computing and transforming matrices into diagonal form, helping verify step-by-step mathematical results.",
     stack: ["Next.js"],
   },
   {
@@ -109,7 +109,7 @@ export const projects: Project[] = [
     type: "Library management",
     image: "/bs.png",
     description:
-      "ระบบยืมหนังสือห้องสมุดสำหรับจัดการข้อมูลหนังสือ สมาชิก และสถานะการยืมคืนให้เป็นระบบมากขึ้น",
+      "A library management system for tracking books, members, and borrowing status in an organized way.",
     stack: ["Next.js", "Spring Boot"],
     collaborators: [
       {

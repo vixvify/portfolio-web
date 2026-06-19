@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Kanit } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const kanit = Kanit({
-  subsets: ["latin", "thai"],
-  weight: ["400", "500", "600"],
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
-  variable: "--font-kanit",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "vixvify | Full Stack Developer",
+  title: "vixvify — Full Stack Developer",
   description:
-    "Portfolio bio for vixvify, a full stack developer studying Applied Computer Science at KMUTT.",
+    "Portfolio of vixvify, a Full Stack Developer studying Applied Computer Science at KMUTT.",
 };
 
 export default function RootLayout({
@@ -21,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${kanit.variable} h-full antialiased`}>
-      <body className="min-h-full bg-[#050505] font-sans text-zinc-100">
+    <html lang="en" className={`${inter.variable} h-full`}>
+      <body className="min-h-full bg-black font-sans text-white antialiased">
         {children}
       </body>
     </html>

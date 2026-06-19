@@ -6,8 +6,8 @@ import { StackSection } from "@/components/stack-section";
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#050505] text-zinc-100">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-14 px-5 py-8 sm:px-8 lg:px-10 lg:py-12">
+    <main className="min-h-screen bg-black text-white">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-14 px-6 py-3 sm:gap-20 sm:px-8 lg:px-12 lg:py-5">
         <SiteHeader />
         <HeroSection />
         <StackSection />

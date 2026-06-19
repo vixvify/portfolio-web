@@ -1,19 +1,26 @@
 export function SiteHeader() {
   return (
-    <header className="flex items-center justify-between border-b border-white/10 pb-5">
-      <a href="#top" className="font-mono text-sm text-zinc-300">
+    <header className="animate-fade-in delay-0 flex items-center justify-between border-b border-white/10 pb-6">
+      <a
+        href="#top"
+        className="text-xs font-semibold uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-60"
+      >
         vixvify
       </a>
-      <nav className="hidden items-center gap-6 text-sm text-zinc-400 sm:flex">
-        <a className="transition hover:text-emerald-300" href="#stack">
-          Stack
-        </a>
-        <a className="transition hover:text-cyan-300" href="#projects">
-          Projects
-        </a>
-        <a className="transition hover:text-amber-300" href="#contact">
-          Contact
-        </a>
+      <nav className="hidden items-center gap-8 sm:flex">
+        {[
+          { label: "Stack", href: "#stack" },
+          { label: "Projects", href: "#projects" },
+          { label: "Contact", href: "#contact" },
+        ].map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            className="nav-link text-xs font-medium uppercase tracking-[0.15em] text-white/50 transition-colors hover:text-white"
+          >
+            {item.label}
+          </a>
+        ))}
       </nav>
     </header>
   );
