@@ -1,11 +1,102 @@
+"use client";
+
 import Image from "next/image";
+import { useRef, useState } from "react";
 import { projects } from "@/data/portfolio";
 
 function getGithubAvatarUrl(username: string) {
   return `https://github.com/${username}.png`;
 }
 
+function PreviewPane({ index }: { index: number }) {
+  const tiltRef = useRef<HTMLDivElement>(null);
+  const project = projects[index];
+
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = tiltRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    el.style.transform = `perspective(900px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) scale(1.02)`;
+  };
+
+  const onMouseLeave = () => {
+    if (tiltRef.current) {
+      tiltRef.current.style.transform =
+        "perspective(900px) rotateY(0deg) rotateX(0deg) scale(1)";
+    }
+  };
+
+  return (
+    <div className="sticky top-8 flex flex-col gap-5">
+      <div
+        key={index}
+        ref={tiltRef}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+        className="preview-image relative aspect-video overflow-hidden bg-[#0a0a0a]"
+        style={{
+          transition: "transform 0.18s ease",
+          transformStyle: "preserve-3d",
+        }}
+      >
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={`${project.name} preview`}
+            fill
+            className="object-cover"
+          />
+        ) : (
+          <div className="h-full w-full bg-[#111]" />
+        )}
+      </div>
+
+      <div key={`desc-${index}`} className="preview-fade">
+        <p className="text-sm leading-7 text-white/50">{project.description}</p>
+
+        {project.collaborators ? (
+          <div className="mt-4 flex items-center gap-3">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/20">
+              With
+            </span>
+            <div className="flex -space-x-2">
+              {project.collaborators.map((c) => {
+                const name = c.name ?? c.username;
+                const avatar = c.avatarUrl || getGithubAvatarUrl(c.username);
+                return (
+                  <a
+                    key={c.username}
+                    href={`https://github.com/${c.username}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    title={name}
+                    className="relative inline-block transition-transform hover:-translate-y-0.5"
+                  >
+                    <Image
+                      src={avatar}
+                      alt={name}
+                      width={28}
+                      height={28}
+                      unoptimized
+                      className="size-7 rounded-full border border-black bg-[#111]"
+                    />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 export function ProjectsSection() {
+  const [hovered, setHovered] = useState(0); // desktop sidebar preview
+  const [expanded, setExpanded] = useState(0); // mobile accordion (-1 = all closed)
+
   return (
     <section id="projects" className="animate-fade-up delay-600">
       <div className="mb-8 flex items-end justify-between border-b border-white/10 pb-6">
@@ -22,94 +113,155 @@ export function ProjectsSection() {
         </span>
       </div>
 
-      <div className="flex flex-col divide-y divide-white/10">
-        {projects.map((project, i) => (
-          <article
-            key={project.name}
-            className="grid gap-4 py-6 first:pt-0 sm:gap-6 sm:py-8 md:grid-cols-[2fr_3fr]"
-          >
-            <div className="flex flex-col gap-3">
-              <div className="relative aspect-video overflow-hidden bg-[#0a0a0a]">
-                {project.image ? (
-                  <Image
-                    src={project.image}
-                    alt={`${project.name} preview`}
-                    width={960}
-                    height={540}
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  <div className="h-full w-full bg-[#111]" />
-                )}
-              </div>
-
-              <span className="text-[10px] font-semibold text-white/20">
-                {String(i + 1).padStart(2, "0")} / {project.type}
-              </span>
-            </div>
-
-            <div className="flex flex-col justify-between gap-4">
-              <div>
-                <h3 className="text-xl font-black tracking-tight text-white sm:text-2xl">
-                  {project.name}
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-white/50 sm:mt-3 sm:leading-7">
-                  {project.description}
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-3 sm:gap-4">
-                <div className="flex flex-wrap gap-2">
-                  {project.stack.map((item) => (
-                    <span
-                      key={item}
-                      className="border border-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/40"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-
-                {project.collaborators ? (
-                  <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/20">
-                      With
-                    </span>
-                    <div className="flex -space-x-2">
-                      {project.collaborators.map((collaborator) => {
-                        const displayName =
-                          collaborator.name ?? collaborator.username;
-                        const avatarUrl =
-                          collaborator.avatarUrl ||
-                          getGithubAvatarUrl(collaborator.username);
-
-                        return (
-                          <a
-                            key={collaborator.username}
-                            href={`https://github.com/${collaborator.username}`}
-                            target="_blank"
-                            rel="noreferrer"
-                            title={displayName}
-                            className="relative inline-block transition-transform hover:z-10 hover:-translate-y-0.5"
-                          >
-                            <Image
-                              src={avatarUrl}
-                              alt={displayName}
-                              width={28}
-                              height={28}
-                              unoptimized
-                              className="size-7 rounded-full border border-black bg-[#111]"
-                            />
-                          </a>
-                        );
-                      })}
-                    </div>
+      <div className="hidden md:grid md:grid-cols-[1fr_1fr] md:gap-10">
+        <div className="flex flex-col divide-y divide-white/10">
+          {projects.map((project, i) => (
+            <div
+              key={project.name}
+              className="project-row group cursor-pointer py-6 transition-all duration-300 first:pt-0"
+              style={{ opacity: hovered === i ? 1 : 0.28 }}
+              onMouseEnter={() => setHovered(i)}
+            >
+              <div className="flex items-start gap-5">
+                <span className="mt-1.5 shrink-0 text-[10px] font-semibold tabular-nums text-white/30">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-2xl font-black leading-tight tracking-tight text-white transition-all group-hover:tracking-wide">
+                    {project.name}
+                  </h3>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
+                    {project.type}
+                  </p>
+                  <div className="mt-1 flex flex-wrap gap-2">
+                    {project.stack.map((item) => (
+                      <span
+                        key={item}
+                        className="border border-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/30"
+                      >
+                        {item}
+                      </span>
+                    ))}
                   </div>
-                ) : null}
+                </div>
               </div>
             </div>
-          </article>
-        ))}
+          ))}
+        </div>
+
+        <PreviewPane index={hovered} />
+      </div>
+
+      <div className="flex flex-col divide-y divide-white/10 md:hidden">
+        {projects.map((project, i) => {
+          const isOpen = expanded === i;
+          const name = project.name;
+
+          return (
+            <div key={name}>
+              <button
+                className="flex w-full items-center gap-4 py-5 text-left first:pt-0"
+                onClick={() => setExpanded(isOpen ? -1 : i)}
+                aria-expanded={isOpen}
+              >
+                <span className="shrink-0 text-[10px] font-semibold tabular-nums text-white/25">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-lg font-black tracking-tight text-white leading-tight pt-5">
+                    {name}
+                  </p>
+                  <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
+                    {project.type}
+                  </p>
+                </div>
+                <span
+                  className="shrink-0 text-white/30 text-lg transition-transform duration-300"
+                  style={{
+                    transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
+                  }}
+                >
+                  +
+                </span>
+              </button>
+
+              <div
+                className="accordion-body overflow-hidden"
+                style={{
+                  display: "grid",
+                  gridTemplateRows: isOpen ? "1fr" : "0fr",
+                  transition:
+                    "grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                }}
+              >
+                <div className="min-h-0">
+                  <div className="flex flex-col gap-4 pb-6">
+                    <div className="relative aspect-video overflow-hidden bg-[#0a0a0a]">
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={`${project.name} preview`}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="h-full w-full bg-[#111]" />
+                      )}
+                    </div>
+
+                    <p className="text-sm leading-7 text-white/50">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.stack.map((item) => (
+                        <span
+                          key={item}
+                          className="border border-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/40"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+
+                    {project.collaborators ? (
+                      <div className="flex items-center gap-3">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/20">
+                          With
+                        </span>
+                        <div className="flex -space-x-2">
+                          {project.collaborators.map((c) => {
+                            const cName = c.name ?? c.username;
+                            const avatar =
+                              c.avatarUrl || getGithubAvatarUrl(c.username);
+                            return (
+                              <a
+                                key={c.username}
+                                href={`https://github.com/${c.username}`}
+                                target="_blank"
+                                rel="noreferrer"
+                                title={cName}
+                              >
+                                <Image
+                                  src={avatar}
+                                  alt={cName}
+                                  width={28}
+                                  height={28}
+                                  unoptimized
+                                  className="size-7 rounded-full border border-black bg-[#111]"
+                                />
+                              </a>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

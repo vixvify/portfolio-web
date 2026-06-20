@@ -13,6 +13,31 @@ type Project = {
   collaborators?: ProjectCollaborator[];
 };
 
+export type Experience = {
+  period: string;
+  role: string;
+  company: string;
+  type: "Internship" | "Freelance" | "Full-time" | "Part-time";
+  current?: boolean;
+};
+
+export const experience: Experience[] = [
+  {
+    period: "2026 — Present",
+    role: "Full Stack Developer",
+    company: "Intech Software House",
+    type: "Freelance",
+    current: true,
+  },
+  {
+    period: "2026",
+    role: "Developer",
+    company: "PTT Public Company Limited",
+    type: "Internship",
+    current: true,
+  },
+];
+
 export const frontend = [
   { name: "React", icon: "react", color: "#61dafb" },
   { name: "Next.js", icon: "nextdotjs", color: "#ffffff" },
