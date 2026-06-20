@@ -30,7 +30,7 @@ export const experience: Experience[] = [
     current: true,
   },
   {
-    period: "2026",
+    period: "Jun - Aug 2026",
     role: "Developer",
     company: "PTT Public Company Limited",
     type: "Internship",
@@ -122,27 +122,20 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "Matrix Diagonalizer",
-    type: "Calculation tool",
-    image: "/da.png",
+    name: "Flight Simulator",
+    type: "Game",
+    image: "/flightsim.png",
     description:
-      "A tool for computing and transforming matrices into diagonal form, helping verify step-by-step mathematical results.",
-    stack: ["Next.js"],
+      "A flight simulator game where players can pilot aircraft and enjoy flying freely.",
+    stack: ["Next.js", "Three.js"],
   },
   {
-    name: "Library Borrowing System",
-    type: "Library management",
-    image: "/bs.png",
+    name: "Linear System Solver",
+    type: "Calculation tool",
+    image: "/matrix.png",
     description:
-      "A library management system for tracking books, members, and borrowing status in an organized way.",
-    stack: ["Next.js", "Spring Boot"],
-    collaborators: [
-      {
-        username: "Puwizz",
-        name: "Puwizz",
-        avatarUrl: "",
-      },
-    ],
+      "A numerical methods tool for solving systems of linear equations using Gauss Elimination, Gauss Jordan, LU Factorization, and Inverse Matrix techniques.",
+    stack: ["Next.js"],
   },
 ];
 
