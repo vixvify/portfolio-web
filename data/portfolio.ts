@@ -122,12 +122,12 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "Flight Simulator",
-    type: "Game",
-    image: "/flightsim.png",
+    name: "OCR Portal",
+    type: "Web application",
+    image: "/ocr.png",
     description:
-      "A flight simulator game where players can pilot aircraft and enjoy flying freely.",
-    stack: ["Next.js", "Three.js"],
+      "A web application that allows users to upload meter images and automatically extracts meter readings using OCR technology.",
+    stack: ["Next.js"],
   },
   {
     name: "Linear System Solver",
