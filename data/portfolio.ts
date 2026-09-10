@@ -170,7 +170,7 @@ export const allProjects: Project[] = [
     image: "/Airplane Reservation System.png",
     description:
       "A concurrent reservation system for managing airplane seats while handling simultaneous bookings.",
-    stack: [],
+    stack: ["C++"],
   },
   {
     name: "Linear System Solver",
@@ -186,21 +186,21 @@ export const allProjects: Project[] = [
     image: "/matrix analyzer.png",
     description:
       "A matrix analysis tool for calculating eigenvalues and eigenvectors and checking whether a matrix can be diagonalized.",
-    stack: [],
+    stack: ["Next.js"],
   },
   {
     name: "IMAX Simulation",
     type: "Web simulation",
     image: "/imax.png",
     description: "A web-based simulation of an IMAX theatre.",
-    stack: [],
+    stack: ["Next.js"],
   },
   {
     name: "Bangkok Planetarium",
     type: "Web simulation",
     image: "/bangkok planetarium.png",
     description: "A web-based simulation of Bangkok Planetarium.",
-    stack: [],
+    stack: ["Next.js"],
   },
   {
     name: "Letter from Where",
@@ -208,7 +208,7 @@ export const allProjects: Project[] = [
     image: "/letterfromwhere.png",
     description:
       "A storytelling website for people experiencing imposter syndrome.",
-    stack: [],
+    stack: ["Next.js"],
   },
   {
     name: "Graph Algorithm Visualizer",
@@ -216,7 +216,7 @@ export const allProjects: Project[] = [
     image: "/Graph Algorithm Visualizer.png",
     description:
       "A visualizer for graph algorithms including Dijkstra, DFS, BFS, Prim, and Kruskal.",
-    stack: [],
+    stack: ["React"],
   },
 ];
 
