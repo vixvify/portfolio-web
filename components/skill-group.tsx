@@ -14,11 +14,12 @@ export function SkillGroup({ title, items }: SkillGroupProps) {
     <div className="stack-group">
       <div className="stack-group-head">
         <p className="stack-group-title">{title}</p>
+        <span className="stack-group-count">{String(items.length).padStart(2, "0")} skills</span>
       </div>
       <div className="skill-list">
         {items.map((item) => (
           <div key={item.name} className="skill-item group">
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center border border-white/10 bg-white/[0.03] transition-colors group-hover:border-[#c8ff6a]/40">
+            <span className="flex h-5 w-5 shrink-0 items-center justify-center border border-white/10 bg-white/[0.03] transition-colors group-hover:border-[#c8ff6a]/40">
               {item.iconUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={item.iconUrl} alt="" aria-hidden="true" className="h-4 w-4 object-contain" />
@@ -38,7 +39,7 @@ export function SkillGroup({ title, items }: SkillGroupProps) {
                 />
               )}
             </span>
-            <span className="text-sm text-white/60 transition-colors group-hover:text-white">{item.name}</span>
+            <span className="text-[0.78rem] text-white/60 transition-colors group-hover:text-white">{item.name}</span>
           </div>
         ))}
       </div>
