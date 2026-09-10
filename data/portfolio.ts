@@ -4,7 +4,7 @@ type ProjectCollaborator = {
   avatarUrl?: string;
 };
 
-type Project = {
+export type Project = {
   name: string;
   type: string;
   image: string;
@@ -159,6 +159,64 @@ export const projects: Project[] = [
         avatarUrl: "",
       },
     ],
+  },
+];
+
+export const allProjects: Project[] = [
+  ...projects,
+  {
+    name: "Airplane Reservation System",
+    type: "Concurrent reservation system",
+    image: "/Airplane Reservation System.png",
+    description:
+      "A concurrent reservation system for managing airplane seats while handling simultaneous bookings.",
+    stack: [],
+  },
+  {
+    name: "Linear System Solver",
+    type: "Calculation tool",
+    image: "/matrix.png",
+    description:
+      "A numerical methods tool for solving systems of linear equations using Gauss Elimination, Gauss Jordan, LU Factorization, and Inverse Matrix techniques.",
+    stack: ["Next.js"],
+  },
+  {
+    name: "Matrix Analyzer",
+    type: "Calculation tool",
+    image: "/matrix analyzer.png",
+    description:
+      "A matrix analysis tool for calculating eigenvalues and eigenvectors and checking whether a matrix can be diagonalized.",
+    stack: [],
+  },
+  {
+    name: "IMAX Simulation",
+    type: "Web simulation",
+    image: "/imax.png",
+    description: "A web-based simulation of an IMAX theatre.",
+    stack: [],
+  },
+  {
+    name: "Bangkok Planetarium",
+    type: "Web simulation",
+    image: "/bangkok planetarium.png",
+    description: "A web-based simulation of Bangkok Planetarium.",
+    stack: [],
+  },
+  {
+    name: "Letter from Where",
+    type: "Storytelling website",
+    image: "/letterfromwhere.png",
+    description:
+      "A storytelling website for people experiencing imposter syndrome.",
+    stack: [],
+  },
+  {
+    name: "Graph Algorithm Visualizer",
+    type: "Algorithm visualizer",
+    image: "/Graph Algorithm Visualizer.png",
+    description:
+      "A visualizer for graph algorithms including Dijkstra, DFS, BFS, Prim, and Kruskal.",
+    stack: [],
   },
 ];
 
