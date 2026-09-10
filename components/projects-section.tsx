@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { type MouseEvent, useRef, useState } from "react";
 import { projects } from "@/data/portfolio";
 
@@ -148,6 +149,11 @@ export function ProjectsSection() {
           );
         })}
       </div>
+
+      <Link href="/projects" className="see-all-projects">
+        <span>See all projects</span>
+        <span aria-hidden="true" className="see-all-projects-arrow">↗</span>
+      </Link>
     </section>
   );
 }
