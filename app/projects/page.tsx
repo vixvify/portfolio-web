@@ -57,20 +57,19 @@ export default function ProjectsPage() {
             <span aria-hidden="true">←</span>
             Back to home
           </Link>
-          <span className="projects-archive-label">vixvify / project archive</span>
+          <span className="projects-archive-label">project archive</span>
         </header>
 
         <section className="projects-archive-hero">
-          <p className="projects-archive-kicker">All projects / 2026</p>
+          <p className="projects-archive-kicker">Projects / 2026</p>
           <div className="projects-archive-hero-grid">
             <h1>
-              Every project,
+              Selected
               <br />
-              <em>in one place.</em>
+              <em>work.</em>
             </h1>
             <p>
-              A collection of shipped work, experiments, simulations, and
-              stories built across different parts of the stack.
+              Projects, experiments, simulations, and stories.
             </p>
           </div>
           <div className="projects-archive-meta">
@@ -86,8 +85,8 @@ export default function ProjectsPage() {
         </section>
 
         <footer className="projects-archive-footer">
-          <span>More details coming soon.</span>
-          <Link href="/">Return to portfolio <span aria-hidden="true">↗</span></Link>
+          <span>Details coming soon.</span>
+          <Link href="/">Back to portfolio <span aria-hidden="true">↗</span></Link>
         </footer>
       </div>
     </main>
