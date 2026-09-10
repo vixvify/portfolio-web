@@ -106,6 +106,18 @@ export const projects: Project[] = [
     description:
       "A condo billing management system for tracking resident charges, invoices, and payment records.",
     stack: ["NestJS"],
+    collaborators: [
+      {
+        username: "ParkPawapon",
+        name: "ParkPawapon",
+        avatarUrl: "",
+      },
+      {
+        username: "aukabanana",
+        name: "aukabanana",
+        avatarUrl: "",
+      },
+    ],
   },
   {
     name: "ACS Website",
