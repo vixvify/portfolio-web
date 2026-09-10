@@ -100,6 +100,14 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "Yoodee",
+    type: "Condo billing system",
+    image: "/coming-soon.png",
+    description:
+      "A condo billing management system for tracking resident charges, invoices, and payment records.",
+    stack: ["NestJS"],
+  },
+  {
     name: "ACS Website",
     type: "Department website",
     image: "/acs.png",
@@ -139,14 +147,6 @@ export const projects: Project[] = [
         avatarUrl: "",
       },
     ],
-  },
-  {
-    name: "Linear System Solver",
-    type: "Calculation tool",
-    image: "/matrix.png",
-    description:
-      "A numerical methods tool for solving systems of linear equations using Gauss Elimination, Gauss Jordan, LU Factorization, and Inverse Matrix techniques.",
-    stack: ["Next.js"],
   },
 ];
 
