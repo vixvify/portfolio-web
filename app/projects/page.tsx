@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CustomCursor } from "@/components/custom-cursor";
 import { allProjects } from "@/data/portfolio";
 
 function ProjectArchiveCard({
@@ -49,6 +50,7 @@ function ProjectArchiveCard({
 export default function ProjectsPage() {
   return (
     <main className="projects-archive">
+      <CustomCursor />
       <div className="projects-archive-shell mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12">
         <header className="projects-archive-header">
           <Link href="/" className="projects-archive-back">
