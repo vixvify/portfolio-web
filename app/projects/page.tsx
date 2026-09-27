@@ -51,7 +51,7 @@ export default function ProjectsPage() {
   return (
     <main className="projects-archive">
       <CustomCursor />
-      <div className="projects-archive-shell mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12">
+      <div className="projects-archive-shell mx-auto w-full max-w-[90rem] px-6 sm:px-8 lg:px-12">
         <header className="projects-archive-header">
           <Link href="/" className="projects-archive-back">
             <span aria-hidden="true">←</span>

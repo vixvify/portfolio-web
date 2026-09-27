@@ -136,7 +136,7 @@ export function ProjectsSection() {
               >
                 <div className="accordion-inner">
                   <div className="flex flex-col gap-4 pb-6">
-                    <div className="project-preview relative aspect-video">
+                    <div className="project-preview relative">
                       {project.image ? <Image src={project.image} alt={`${project.name} preview`} fill className="object-cover" /> : <div className="h-full w-full bg-[#111]" />}
                     </div>
                     <p className="text-sm leading-7 text-white/50">{project.description}</p>

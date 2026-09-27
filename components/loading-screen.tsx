@@ -24,12 +24,7 @@ export function LoadingScreen() {
         transition: phase === "leaving" ? "transform 0.75s cubic-bezier(0.76, 0, 0.24, 1)" : "none",
       }}
     >
-      <div className="loading-mark">
-        <span>VX</span>
-        <small>SYS / 26</small>
-      </div>
-      <div className="loading-line"><i /></div>
-      <span className="loading-label">Loading interface</span>
+      <div className="loading-spinner" role="status" aria-label="Loading" />
     </div>
   );
 }
