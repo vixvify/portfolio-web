@@ -167,7 +167,7 @@ export const allProjects: Project[] = [
   {
     name: "Airplane Reservation System",
     type: "Concurrent reservation system",
-    image: "/Airplane Reservation System.png",
+    image: "/airplane.png",
     description:
       "A concurrent reservation system for managing airplane seats while handling simultaneous bookings.",
     stack: ["C++"],
