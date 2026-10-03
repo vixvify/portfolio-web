@@ -100,6 +100,26 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "Bangmod Guesser",
+    type: "University Gameplay",
+    image: "/bmg.png",
+    description:
+      "A location-guessing game where players explore KMUTT by identifying campus locations from photos.",
+    stack: ["Next.js"],
+    collaborators: [
+      {
+        username: "Auntonin",
+        name: "Auntonin",
+        avatarUrl: "",
+      },
+      {
+        username: "burqmet",
+        name: "burqmet",
+        avatarUrl: "",
+      },
+    ],
+  },
+  {
     name: "Yoodee",
     type: "Condo billing system",
     image: "/coming-soon.png",
@@ -144,7 +164,10 @@ export const projects: Project[] = [
       },
     ],
   },
+];
 
+export const allProjects: Project[] = [
+  ...projects,
   {
     name: "Pirahus",
     type: "Web platform",
@@ -160,14 +183,10 @@ export const projects: Project[] = [
       },
     ],
   },
-];
-
-export const allProjects: Project[] = [
-  ...projects,
   {
     name: "Airplane Reservation System",
     type: "Concurrent reservation system",
-    image: "/airplane.png",
+    image: "/os.png",
     description:
       "A concurrent reservation system for managing airplane seats while handling simultaneous bookings.",
     stack: ["C++"],
