@@ -2,11 +2,11 @@ import { experience } from "@/data/portfolio";
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="section-block animate-fade-up delay-500">
+    <section id="experience" className="section-block">
       <div className="section-heading">
         <div>
           <p className="section-kicker"><span>03</span> / experience</p>
-          <h2>Where I&apos;ve been.</h2>
+          <h2>Learning by building<span className="heading-dot">.</span></h2>
         </div>
         <p className="section-note">Small teams, ambitious briefs,<br className="hidden sm:block" /> lots of learning in public.</p>
       </div>

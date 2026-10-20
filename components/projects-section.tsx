@@ -43,12 +43,13 @@ function PreviewPane({ index }: { index: number }) {
   const project = projects[index];
 
   const onMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce), (hover: none)").matches) return;
     const element = tiltRef.current;
     if (!element) return;
     const rect = element.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width - 0.5;
     const y = (event.clientY - rect.top) / rect.height - 0.5;
-    element.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) scale(1.02)`;
+    element.style.transform = `perspective(1200px) rotateY(${x * 3}deg) rotateX(${-y * 3}deg)`;
   };
 
   const onMouseLeave = () => {
@@ -58,15 +59,15 @@ function PreviewPane({ index }: { index: number }) {
   };
 
   return (
-    <div className="sticky top-8 flex flex-col gap-5">
+    <div className="project-detail">
       <div ref={tiltRef} onMouseMove={onMouseMove} onMouseLeave={onMouseLeave} className="project-preview preview-image">
-        {project.image ? <Image src={project.image} alt={`${project.name} preview`} fill className="object-cover" /> : <div className="h-full w-full bg-[#111]" />}
+        {project.image ? <Image key={project.image} src={project.image} alt={`${project.name} preview`} fill sizes="(min-width: 768px) 55vw, 100vw" className="object-cover" /> : <div className="h-full w-full bg-[#111]" />}
         <div className="project-preview-shade" />
         <div className="project-preview-top"><span>Selected / {String(index + 1).padStart(2, "0")}</span><span>↗</span></div>
         <div className="project-preview-bottom"><span>{project.type}</span><strong>{project.name}</strong></div>
       </div>
 
-      <div className="preview-fade">
+      <div key={project.name} className="preview-fade project-detail-copy">
         <p className="max-w-lg text-sm leading-7 text-white/50">{project.description}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {project.stack.map((item) => <span key={item} className="tag">{item}</span>)}
@@ -82,11 +83,11 @@ export function ProjectsSection() {
   const [expanded, setExpanded] = useState(-1);
 
   return (
-    <section id="projects" className="section-block animate-fade-up delay-600">
+    <section id="projects" className="section-block">
       <div className="section-heading">
         <div>
-          <p className="section-kicker"><span>05</span> / selected work</p>
-          <h2>Things I&apos;ve shipped.</h2>
+          <p className="section-kicker"><span>01</span> / selected work</p>
+          <h2>Ideas, made real<span className="heading-dot">.</span></h2>
         </div>
         <span className="section-count">0{projects.length} projects</span>
       </div>
@@ -100,6 +101,8 @@ export function ProjectsSection() {
               className={`project-row group ${hovered === index ? "is-active" : ""}`}
               onMouseEnter={() => setHovered(index)}
               onFocus={() => setHovered(index)}
+              onClick={() => setHovered(index)}
+              aria-pressed={hovered === index}
             >
               <span className="project-index">{String(index + 1).padStart(2, "0")}</span>
               <span className="project-row-copy">
@@ -118,8 +121,8 @@ export function ProjectsSection() {
         {projects.map((project, index) => {
           const isOpen = expanded === index;
           return (
-            <div key={project.name} className="overflow-hidden border border-white/10 bg-[#0c110e] shadow-[0_12px_30px_rgba(0,0,0,0.18)]">
-              <button type="button" className="flex min-h-[5.75rem] w-full items-center gap-4 px-4 py-5 text-left" onClick={() => setExpanded(isOpen ? -1 : index)} aria-expanded={isOpen}>
+            <div key={project.name} className="mobile-project-card">
+              <button type="button" className="flex min-h-[5.75rem] w-full items-center gap-4 px-4 py-5 text-left" onClick={() => setExpanded(isOpen ? -1 : index)} aria-expanded={isOpen} aria-controls={`project-panel-${index}`}>
                 <span className="shrink-0 text-[10px] font-semibold tabular-nums text-[#c8ff6a]/60">{String(index + 1).padStart(2, "0")}</span>
                 <span className="min-w-0 flex-1"><span className="block pt-1 text-lg font-black leading-tight tracking-tight text-white">{project.name}</span><span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">{project.type}</span></span>
                 <span className="shrink-0 text-lg text-[#c8ff6a]/70 transition-transform duration-300" style={{ transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}>+</span>
@@ -127,6 +130,8 @@ export function ProjectsSection() {
               <div
                 className="overflow-hidden px-4"
                 aria-hidden={!isOpen}
+                inert={!isOpen}
+                id={`project-panel-${index}`}
                 style={{
                   maxHeight: isOpen ? "62rem" : "0px",
                   opacity: isOpen ? 1 : 0,
@@ -137,7 +142,7 @@ export function ProjectsSection() {
                 <div className="accordion-inner">
                   <div className="flex flex-col gap-4 pb-6">
                     <div className="project-preview relative">
-                      {project.image ? <Image src={project.image} alt={`${project.name} preview`} fill className="object-cover" /> : <div className="h-full w-full bg-[#111]" />}
+                      {project.image ? <Image src={project.image} alt={`${project.name} preview`} fill sizes="100vw" className="object-cover" /> : <div className="h-full w-full bg-[#111]" />}
                     </div>
                     <p className="text-sm leading-7 text-white/50">{project.description}</p>
                     <div className="flex flex-wrap gap-2">{project.stack.map((item) => <span key={item} className="tag">{item}</span>)}</div>
