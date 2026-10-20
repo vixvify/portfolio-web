@@ -1,18 +1,18 @@
 export function SiteHeader() {
   return (
-    <header className="site-header animate-fade-in delay-0">
+    <header className="site-header">
       <a href="#top" className="brand-mark">
         <span className="brand-symbol">V</span>
         <span>vixvify</span>
       </a>
       <nav
-        className="hidden items-center gap-7 sm:flex"
+        className="site-navigation"
         aria-label="Main navigation"
       >
         {[
-          { label: "Stack", href: "#stack" },
-          { label: "Work", href: "#experience" },
           { label: "Projects", href: "#projects" },
+          { label: "Toolkit", href: "#stack" },
+          { label: "About", href: "#experience" },
           { label: "Contact", href: "#contact" },
         ].map((item) => (
           <a key={item.href} href={item.href} className="nav-link">

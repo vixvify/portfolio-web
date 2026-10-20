@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageMotion } from "@/components/page-motion";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="min-h-full bg-[#080909] font-sans text-white antialiased">{children}</body>
+      <body className="min-h-full font-sans antialiased"><PageMotion />{children}</body>
     </html>
   );
 }
